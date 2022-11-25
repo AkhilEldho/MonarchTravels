@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<form asp-controller="Home" asp-action="Checkout">
+
+    @Html.DropDownList("Flight", ViewBag.flightNames as SelectList, "Select Flight", new { @name="flight", @id="flight", @style = "width: 500px"})
+    <br />
+    <br />
+    @Html.DropDownList("Accomodation", ViewBag.accomodationNames as SelectList, "Select Accomodation", new { @name="accomodation", @id="accomodation", @style = "width: 500px"})
+    <br />
+    <br />
+    @Html.DropDownList("Tour", ViewBag.tourDestinations as SelectList, "Select Tour", new { @name="tour", @id="tour", @style = "width: 500px"})
+    <br />
+    <br />
+
+    <input type="submit" value="Book" />
+    <br /><br />
+</form>
+
