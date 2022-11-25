@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Client.Models.DB.Flight>
+
+@{
+    ViewData["Title"] = "Flights";
+}
+
+<h3>Flights</h3>
+
+<br/>
+<form method="post" asp-action="DisplayFlight" asp-controller="Flight">
+    <label>Enter desired flight cost: </label>
+    <input type="text" id="cost" name="cost" placeholder="Enter value to search" />
+    <input type="submit" value="submit"/>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightCost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightCost)
+            </td>
+            @if(User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FlightId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.FlightId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.FlightId">Delete</a>
+                </td>
+            }         
+        </tr>
+}
+    </tbody>
+</table>

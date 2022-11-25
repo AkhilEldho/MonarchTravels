@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Client.Models.DB.Tour>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h3>Tours</h3>
+
+<br/>
+<form method="post" asp-action="DisplayTour" asp-controller="Tour">
+    <label>Enter desired tour cost: </label>
+    <input type="text" id="cost" name="cost" placeholder="Enter value to search" />
+    <input type="submit" value="submit"/>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TourDestination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TourCost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TourDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TourCost)
+            </td>
+            @if(User.IsInRole("Admin"))
+               {
+                   <td>
+                       <a asp-action="Edit" asp-route-id="@item.TourId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TourId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TourId">Delete</a>
+                   </td>
+               }       
+        </tr>
+}
+    </tbody>
+</table>

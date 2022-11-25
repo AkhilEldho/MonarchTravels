@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Client.Models.DB.Accomodation>
+
+@{
+    ViewData["Title"] = "Search Result";
+}
+
+<h3>Search Results: </h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccomodationCost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccomodationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccomodationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccomodationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccomodationCost)
+            </td>
+  @*          <td>
+                <a asp-action="Edit" asp-route-id="@item.AccomodationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AccomodationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AccomodationId">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

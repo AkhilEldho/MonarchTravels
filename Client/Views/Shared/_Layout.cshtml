@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Client.styles.css" asp-append-version="true" />
+    <!--Inline CSS to style the hover for Packages Dropdown-->
+    <style>
+        .dropdown-menu a:hover {
+            background-color: #B6D0E2;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,6 +31,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        <!--Packages DropDown-->
+                        <li class="nav-item dropdown">
+                            <a href ="#" class="nav-link dropdown text-dark dropdown-toggle"  data-bs-toggle="dropdown">Packages</a>
+                            <div class="dropdown-menu">
+                                <!--Showing the list of All Flights-->               
+                                <a class="nav-link text-dark" id="flightMenu" asp-area="" asp-controller="Flight" asp-action="Index">Flight</a>                           
+                                <!--Showing the list of All Accomodations-->
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Accomodation" asp-action="Index">Accomodation</a>
+                                <!--Showing the list of All Tours-->
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tour" asp-action="Index">Tour</a>
+                            </div>
+                        </li>
+               
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
